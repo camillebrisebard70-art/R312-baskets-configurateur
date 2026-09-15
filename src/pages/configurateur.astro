@@ -1,8 +1,35 @@
 ---
+export const prerender = false;
+
 import Layout from "../layouts/Layout.astro";
 import Configurateur from "../components/Configurateur.astro";
+
+let configuration_basket = {
+    semelle: "#ffffff",
+    empeigne: "#ffffff",
+    pointe: "#ffffff",
+    oeillet: "#ffffff",
+    bande: "#ffffff",
+    languette: "#ffffff",
+    lacet: "#ffffff",
+    trimestre: "#ffffff"
+};
+
+if (Astro.request.method === "POST") {
+    const formData = await Astro.request.formData();
+    configuration_basket = {
+        semelle: formData.get("semelle")?.toString() ?? "#ffffff",
+        empeigne: formData.get("empeigne")?.toString() ?? "#ffffff",
+        pointe: formData.get("pointe")?.toString() ?? "#ffffff",
+        oeillet: formData.get("oeillet")?.toString() ?? "#ffffff",
+        bande: formData.get("bande")?.toString() ?? "#ffffff",
+        languette: formData.get("languette")?.toString() ?? "#ffffff",
+        lacet: formData.get("lacet")?.toString() ?? "#ffffff",
+        trimestre: formData.get("trimestre")?.toString() ?? "#ffffff",
+    };
+}
 ---
 
 <Layout>
-  <Configurateur />
+  <Configurateur configurationInitiale={configuration_basket} />
 </Layout>
