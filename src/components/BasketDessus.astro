@@ -1,13 +1,13 @@
 ---
-interface Props {
-  semelle: string;
-  empeigne: string;
-  pointe: string;
-  oeillet: string;
-  bande: string;
-  languette: string;
-  lacet: string;
-  trimestre: string;
+interface Props{
+  semelle?: string;
+  empeigne?: string;
+  pointe?: string;
+  oeillet?: string;
+  bande?: string;
+  languette?: string;
+  lacet?: string;
+  trimestre?: string;
 }
 const { semelle = "white", empeigne = "white", pointe = "white", oeillet = "white", bande = "white", languette = "white", lacet = "white", trimestre = "white" } = Astro.props;
 ---
@@ -29,7 +29,7 @@ const { semelle = "white", empeigne = "white", pointe = "white", oeillet = "whit
       stroke="black"
       stroke-width="3"
       stroke-miterlimit="10"
-      class="cls-1"
+      class="semelle"
     ></path>
     <path
       d="M284.51,37.56s-.9-6.2,36.3,10,57.6,19.6,57.2,44.8-28.2,36.1-28.2,36.1-49.8,21.7-55.7,25.2,1.5-20.3,1.5-20.3,1.9-7.5-6.8-6.8-128,8.7-128,8.7-12.1,4.1-39,13-75.7-19.8-75.7-19.8-54.2-31.1,1.7-66.6,101.8-11.3,101.8-11.3,31.1,17,77.4,15.2c45.2-1.7,69.6,6.4,71.2,2.3C303.71,53.26,284.51,37.56,284.51,37.56Z"
