@@ -8,4 +8,10 @@ const database = new Database(new URL("../../data/db.sqlite", import.meta.url).p
 export const auth = betterAuth({
   database,
   emailAndPassword: { enabled: true },
+   socialProviders: {
+    google: {
+      clientId: import.meta.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: import.meta.env.GOOGLE_CLIENT_SECRET as string,
+    },
+  },
 });

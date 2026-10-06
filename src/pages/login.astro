@@ -14,6 +14,7 @@ if (Astro.locals.user) return Astro.redirect("/baskets");
     <p id="error" class="text-error"></p>
     <button type="button" id="login" class="btn btn-primary">Se connecter</button>
     <button type="button" id="signup" class="btn btn-outline">Créer un compte</button>
+    <button type="button" id="google" class="btn btn-outline">Se connecter avec Google</button>
   </form>
 </Layout>
 
@@ -40,4 +41,7 @@ if (Astro.locals.user) return Astro.redirect("/baskets");
 
   document.querySelector("#login")!.addEventListener("click", () => submit("login"));
   document.querySelector("#signup")!.addEventListener("click", () => submit("signup"));
+  document.querySelector("#google")!.addEventListener("click", () =>
+  authClient.signIn.social({ provider: "google", callbackURL: "/baskets" }),
+);
 </script>
