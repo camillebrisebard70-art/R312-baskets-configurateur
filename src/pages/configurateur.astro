@@ -31,20 +31,20 @@ if (Astro.request.method === "POST") {
 
   const description = formData.get("description")?.toString() ?? "";
 
-  db.run(
-    `INSERT INTO BASKETS (user_id, description, semelle, empeigne, pointe, oeillet, bande, languette, lacet, trimestre)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [
-      1,
-      description,
-      configuration_basket.semelle,
-      configuration_basket.empeigne,
-      configuration_basket.pointe,
-      configuration_basket.oeillet,
-      configuration_basket.bande,
-      configuration_basket.languette,
-      configuration_basket.lacet,
-      configuration_basket.trimestre,
+db.run(
+  `INSERT INTO BASKETS (user_id, description, semelle, empeigne, pointe, oeillet, bande, languette, lacet, trimestre)
+   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  [
+    Astro.locals.user!.id,
+    description,
+    configuration_basket.semelle,
+    configuration_basket.empeigne,
+    configuration_basket.pointe,
+    configuration_basket.oeillet,
+    configuration_basket.bande,
+    configuration_basket.languette,
+    configuration_basket.lacet,
+    configuration_basket.trimestre,
     ],
   );
 }

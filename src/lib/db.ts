@@ -8,7 +8,7 @@ db.exec("PRAGMA journal_mode = WAL;");
 
 export interface Basket {
   id: number;
-  user_id: number;
+  user_id: string;
   description: string;
   semelle: string;
   empeigne: string;
@@ -22,7 +22,7 @@ export interface Basket {
 
 db.run(`CREATE TABLE IF NOT EXISTS BASKETS (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  user_id INTEGER NOT NULL,
+  user_id TEXT NOT NULL REFERENCES user(id),
   description TEXT,
   semelle TEXT DEFAULT '#ffffff',
   empeigne TEXT DEFAULT '#ffffff',

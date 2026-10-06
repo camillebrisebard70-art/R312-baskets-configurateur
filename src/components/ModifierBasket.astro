@@ -41,23 +41,17 @@ if (Astro.request.method === "POST") {
   };
 
   db.run(
-    `UPDATE BASKETS
-     SET description = ?, semelle = ?, empeigne = ?, pointe = ?, oeillet = ?,
-         bande = ?, languette = ?, lacet = ?, trimestre = ?
-     WHERE id = ?`,
-    [
-      description,
-      configuration_basket.semelle,
-      configuration_basket.empeigne,
-      configuration_basket.pointe,
-      configuration_basket.oeillet,
-      configuration_basket.bande,
-      configuration_basket.languette,
-      configuration_basket.lacet,
-      configuration_basket.trimestre,
-      id,
-    ],
-  );
+  `UPDATE BASKETS
+   SET description = ?, semelle = ?, empeigne = ?, pointe = ?, oeillet = ?,
+       bande = ?, languette = ?, lacet = ?, trimestre = ?
+   WHERE id = ? AND user_id = ?`,
+  [
+    description, configuration_basket.semelle, configuration_basket.empeigne,
+    configuration_basket.pointe, configuration_basket.oeillet, configuration_basket.bande,
+    configuration_basket.languette, configuration_basket.lacet, configuration_basket.trimestre,
+    id, Astro.locals.user!.id,
+  ],
+);
 }
 ---
 
