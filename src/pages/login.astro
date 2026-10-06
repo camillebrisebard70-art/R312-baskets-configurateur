@@ -15,6 +15,7 @@ if (Astro.locals.user) return Astro.redirect("/baskets");
     <button type="button" id="login" class="btn btn-primary">Se connecter</button>
     <button type="button" id="signup" class="btn btn-outline">Créer un compte</button>
     <button type="button" id="google" class="btn btn-outline">Se connecter avec Google</button>
+    <button type="button" id="github" class="btn btn-outline">Se connecter avec GitHub</button>
   </form>
 </Layout>
 
@@ -39,9 +40,12 @@ if (Astro.locals.user) return Astro.redirect("/baskets");
     else window.location.href = "/baskets";
   }
 
-  document.querySelector("#login")!.addEventListener("click", () => submit("login"));
-  document.querySelector("#signup")!.addEventListener("click", () => submit("signup"));
-  document.querySelector("#google")!.addEventListener("click", () =>
+document.querySelector("#login")!.addEventListener("click", () => submit("login"));
+document.querySelector("#signup")!.addEventListener("click", () => submit("signup"));
+document.querySelector("#google")!.addEventListener("click", () =>
   authClient.signIn.social({ provider: "google", callbackURL: "/baskets" }),
+);
+document.querySelector("#github")!.addEventListener("click", () =>
+  authClient.signIn.social({ provider: "github", callbackURL: "/baskets" }),
 );
 </script>
